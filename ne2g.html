@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        div.stats {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Player Stats</h1>
+        <select id="playerSelect">
+            <option value="Femash">Femash</option>
+            <option value="YummyPie">YummyPie</option>
+            <option value="_LightLegend_">_LightLegend_</option>
+        </select>
+
+        <div class="stats" id="playerStats">
+            <h3>Player Stats for <span id="selectedPlayer"></span></h3>
+            <p>Tokens: <span id="tokens">0</span></p>
+            <p>Level: <span id="level">0</span></p>
+            <p>Shop Tokens: <span id="shopTokens">0</span></p>
+        </div>
+
+        <div class="button-container">
+            <button id="questsButton">Quests</button>
+            <button id="scButton">SC</button>
+        </div>
+    </div>
+
+    <script>
+        // Get references to HTML elements
+        const playerSelect = document.getElementById("playerSelect");
+        const selectedPlayer = document.getElementById("selectedPlayer");
+        const tokens = document.getElementById("tokens");
+        const level = document.getElementById("level");
+        const shopTokens = document.getElementById("shopTokens");
+        const playerStats = document.getElementById("playerStats");
+
+        // Player data
+        const playerData = {
+            "Femash": { tokens: 100, level: 10, shopTokens: 50 },
+            "YummyPie": { tokens: 200, level: 15, shopTokens: 75 },
+            "_LightLegend_": { tokens: 150, level: 12, shopTokens: 60 }
+        };
+
+        // Function to update player stats when a player is selected
+        function updatePlayerStats() {
+            const selectedPlayerName = playerSelect.value;
+            const player = playerData[selectedPlayerName];
+
+            if (player) {
+                selectedPlayer.textContent = selectedPlayerName;
+                tokens.textContent = player.tokens;
+                level.textContent = player.level;
+                shopTokens.textContent = player.shopTokens;
+                playerStats.style.display = "block";
+            } else {
+                playerStats.style.display = "none";
+            }
+        }
+
+        // Add event listener to the player selection dropdown
+        playerSelect.addEventListener("change", updatePlayerStats);
+
+        // Initialize with the first player
+        updatePlayerStats();
+
+        // Add event listeners for the buttons
+        const questsButton = document.getElementById("questsButton");
+        const scButton = document.getElementById("scButton");
+
+        questsButton.addEventListener("click", function () {
+            window.location.href = "quests.html";
+        });
+
+        scButton.addEventListener("click", function () {
+            window.location.href = "sc.html";
+        });
+    </script>
+</body>
+</html>
