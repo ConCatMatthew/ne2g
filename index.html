@@ -1,31 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Under Construction</title>
+    <title>OneTwentyFive</title>
     <style>
         body {
-            background-color: #000;
-            margin: 0;
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            margin: 0;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
+        #container {
+            text-align: center;
+        }
+
+        #logo {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
+
 <body>
-    <div>
-        <img src="underconstruction.gif" alt="Under Construction">
-        <img src="bebacklater.gif" alt="Be Back Later">
+    <div id="container">
+        <div id="logo">OneTwentyFive</div>
+        <h1>Current Version</h1>
+        <p>1.2.0</p>
+        <button onclick="window.location.href='https://cdn.discordapp.com/attachments/1137338331643007076/1183110064664477797/OTF-ver-1.2.0.jar?ex=6587241c&is=6574af1c&hm=a955bbbf82880db9cadd393bbc56f45840160ac439167276b955c7edfe262cd3'">Download</button>
     </div>
 </body>
+
 </html>
