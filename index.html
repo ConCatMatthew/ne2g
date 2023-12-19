@@ -13,15 +13,20 @@
         <!-- Lowered baseplate -->
         <a-plane position="0 -0.5 0" rotation="-90 0 0" width="100" height="100" color="#222"></a-plane>
 
-        <!-- Hand controllers -->
-        <a-entity id="left-hand" hand-controls="hand: left"></a-entity>
-        <a-entity id="right-hand" hand-controls="hand: right"></a-entity>
+        <!-- Hand controllers with movement -->
+        <a-entity id="left-hand" hand-controls="left" aframe-extras-controls="movementEnabled: true"></a-entity>
+        <a-entity id="right-hand" hand-controls="right" aframe-extras-controls="movementEnabled: true"></a-entity>
 
-        <!-- Table for placing models -->
-        <a-box position="0 0 -2" width="2" height="0.1" depth="2" color="brown"></a-box>
+        <!-- Raised table for placing models -->
+        <a-box position="0 0.5 -2" width="2" height="0.1" depth="2" color="brown"></a-box>
 
         <!-- Placeholder for the loaded model -->
         <a-entity id="loaded-model"></a-entity>
+
+        <!-- Camera rig for movement -->
+        <a-entity id="rig" position="0 1.6 0">
+            <a-camera></a-camera>
+        </a-entity>
     </a-scene>
 
     <script>
@@ -38,9 +43,7 @@
         }
 
         // Example usage
-        loadModel('chicken.obj', '0 0 -2'); // Adjust the path and position
-
-        // You can call this function with different model URLs and positions to load multiple models.
+        loadModel('chicken.obj', '0 0.8 -2'); // Adjust the model name and position
     </script>
 </body>
 </html>
