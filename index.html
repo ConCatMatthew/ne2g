@@ -9,17 +9,17 @@
 </head>
 <body>
     <a-scene>
-        <!-- Camera with a user height of 1.6 meters -->
-        <a-entity id="rig" position="0 1.6 0">
-            <a-camera></a-camera>
-        </a-entity>
+        <!-- Lowered baseplate -->
+        <a-plane position="0 -0.5 0" rotation="-90 0 0" width="100" height="100" color="#222"></a-plane>
 
-        <!-- Hand controllers using aframe-extras-controls -->
-        <a-entity id="left-hand" hand-controls="left" aframe-extras-controls></a-entity>
-        <a-entity id="right-hand" hand-controls="right" aframe-extras-controls></a-entity>
-
-        <!-- Infinite baseplate at feet level -->
-        <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#222"></a-plane>
+        <!-- Hand controllers -->
+        <a-entity id="left-hand" hand-controls="hand: left"></a-entity>
+        <a-entity id="right-hand" hand-controls="hand: right"></a-entity>
     </a-scene>
+
+    <script>
+        document.querySelector('#left-hand').setAttribute('geometry', {primitive: 'circle', radius: 0.1});
+        document.querySelector('#right-hand').setAttribute('geometry', {primitive: 'circle', radius: 0.1});
+    </script>
 </body>
 </html>
