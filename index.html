@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-obj-loader/v2.0.7/dist/aframe-obj-loader.min.js"></script>
     <title>VR Game</title>
 </head>
 <body>
@@ -15,11 +16,31 @@
         <!-- Hand controllers -->
         <a-entity id="left-hand" hand-controls="hand: left"></a-entity>
         <a-entity id="right-hand" hand-controls="hand: right"></a-entity>
+
+        <!-- Table for placing models -->
+        <a-box position="0 0 -2" width="2" height="0.1" depth="2" color="brown"></a-box>
+
+        <!-- Placeholder for the loaded model -->
+        <a-entity id="loaded-model"></a-entity>
     </a-scene>
 
     <script>
         document.querySelector('#left-hand').setAttribute('geometry', {primitive: 'circle', radius: 0.1});
         document.querySelector('#right-hand').setAttribute('geometry', {primitive: 'circle', radius: 0.1});
+
+        // Function to load OBJ model
+        function loadModel(url, position) {
+            const model = document.createElement('a-entity');
+            model.setAttribute('obj-model', 'obj: ' + url);
+            model.setAttribute('position', position);
+            model.setAttribute('scale', '0.1 0.1 0.1'); // Adjust the scale as needed
+            document.querySelector('#loaded-model').appendChild(model);
+        }
+
+        // Example usage
+        loadModel('chicken.obj', '0 0 -2'); // Adjust the path and position
+
+        // You can call this function with different model URLs and positions to load multiple models.
     </script>
 </body>
 </html>
