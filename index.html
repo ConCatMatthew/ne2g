@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/donmccurdy/aframe-extras/v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/super-hands@1.1.4/dist/super-hands.min.js"></script>
     <title>VR Game</title>
 </head>
 <body>
@@ -14,17 +14,12 @@
             <a-camera></a-camera>
         </a-entity>
 
-        <!-- Hand controllers with adjusted positions -->
-        <a-entity id="left-hand" hand-controls="hand: left" position="-0.2 0.4 -0.2"></a-entity>
-        <a-entity id="right-hand" hand-controls="hand: right" position="0.2 0.4 -0.2"></a-entity>
+        <!-- Hand controllers using aframe-super-hands -->
+        <a-entity id="left-hand" super-hands="hand: left"></a-entity>
+        <a-entity id="right-hand" super-hands="hand: right"></a-entity>
 
         <!-- Infinite baseplate at feet level -->
         <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#222"></a-plane>
     </a-scene>
-
-    <script>
-        document.querySelector('#left-hand').setAttribute('geometry', {primitive: 'circle', radius: 0.1});
-        document.querySelector('#right-hand').setAttribute('geometry', {primitive: 'circle', radius: 0.1});
-    </script>
 </body>
 </html>
