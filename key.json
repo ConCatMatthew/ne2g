@@ -1,1 +1,7 @@
-test_key
+{
+  "keys": [
+    "test_key1",
+    "test_key2",
+    "test_key3"
+  ]
+}
