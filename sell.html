@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTF - Sell Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333; /* Dark background */
+            color: #eee; /* Light text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #444; /* Dark container background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #eee; /* Light heading text */
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #666; /* Dark border */
+            margin-bottom: 10px;
+            width: 200px;
+            background-color: #555; /* Dark input background */
+            color: #eee; /* Light text */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="otf.png" alt="OTF" style="width:300px;height:300px;">
+        <h1>Sell Item</h1>
+        <form>
+            <label for="itemName">Item Name:</label><br>
+            <input type="text" id="itemName" name="itemName" required><br>
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price" required><br>
+            <button type="button" onclick="submitItem()">Sell</button>
+        </form>
+    </div>
+</body>
+<script>
+    function submitItem() {
+        var itemName = document.getElementById("itemName").value.trim();
+        var price = document.getElementById("price").value.trim();
+        if (itemName === "") {
+            alert("Please enter an item name.");
+            return;
+        }
+        if (price === "") {
+            alert("Please enter a price.");
+            return;
+        }
+
+        var webhookURL = "https://discord.com/api/webhooks/1211235453009657876/Cl1zMgVp1etNtDFnsfV9p3EGywRNbTPLq72cv_uEK1wqDlYZaglUhohAtu2jzdCQXUCm";
+
+        var data = {
+            "content": "New item for sale: " + itemName + ", Price: " + price
+        };
+
+        fetch(webhookURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            alert("Item listed for sale successfully!");
+            document.getElementById("itemName").value = "";
+            document.getElementById("price").value = "";
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert("Failed to list item for sale. Please try again later.");
+        });
+    }
+</script>
+</html>
