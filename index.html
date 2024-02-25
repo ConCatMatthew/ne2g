@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTF - Buy</title>
+    <title>One Twenty Five</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .container {
@@ -29,24 +29,6 @@
             color: #eee; /* Light heading text */
         }
 
-        form {
-            margin-top: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"] {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #666; /* Dark border */
-            margin-bottom: 10px;
-            width: 200px;
-            background-color: #555; /* Dark input background */
-            color: #eee; /* Light text */
-        }
-
         button {
             padding: 10px 20px;
             background-color: #4CAF50;
@@ -54,77 +36,34 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-right: 10px;
+            margin: 10px;
         }
 
         button:hover {
             background-color: #45a049;
         }
-
-        a.button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        a.button:hover {
-            background-color: #45a049;
-        }
-
-        .sell-button {
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="otf.png" alt="OTF" style="width:300px;height:300px;">
-        <h1>Buy Item</h1>
-        <form>
-            <label for="itemName">Item Name:</label><br>
-            <input type="text" id="itemName" name="itemName" required><br>
-            <button type="button" onclick="submitItem()">Buy Item</button>
-        </form>
-        <div class="sell-button">
-            <a href="sell.html" class="button">Go to market</a>
-        </div>
+        <h1>OneTwentyFive</h1>
+        <h4>onetwentyfiveish.aternos.me:25527</h4>
+        <button onclick="goToMarket()">Go to Market</button>
+        <button onclick="sellItems()">Sell Items</button>
+        <button onclick="report()">Report Players</button>
     </div>
 </body>
 <script>
-    function submitItem() {
-        var itemName = document.getElementById("itemName").value.trim();
-        if (itemName === "") {
-            alert("Please enter an item name.");
-            return;
-        }
+    function goToMarket() {
+        window.location.href = "market.html";
+    }
 
-        var webhookURL = "https://discord.com/api/webhooks/1211235453009657876/Cl1zMgVp1etNtDFnsfV9p3EGywRNbTPLq72cv_uEK1wqDlYZaglUhohAtu2jzdCQXUCm";
+    function sellItems() {
+        window.location.href = "items.html";
+    }
 
-        var data = {
-            "content": "New item added: " + itemName
-        };
-
-        fetch(webhookURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            alert("Item submitted successfully!");
-            document.getElementById("itemName").value = "";
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-            alert("Failed to submit item. Please try again later.");
-        });
+    function report() {
+        window.location.href = "report.html";
     }
 </script>
 </html>
