@@ -30,7 +30,7 @@
             let roadGeometry = new THREE.PlaneGeometry(500, 10, 500, 10);
             let roadMaterial = new THREE.MeshBasicMaterial({ color: 0x333333, side: THREE.DoubleSide });
             road = new THREE.Mesh(roadGeometry, roadMaterial);
-            road.rotation.x = Math.PI / 2;
+            road.rotation.x = -Math.PI / 2;
             scene.add(road);
 
             // Light
@@ -38,7 +38,8 @@
             light.position.set(5, 10, 7.5);
             scene.add(light);
 
-            camera.position.set(0, 1.6, 5); // Position the camera
+            // Position the camera above the road
+            camera.position.set(0, 1.6, 5);
         }
 
         function generateRoad() {
