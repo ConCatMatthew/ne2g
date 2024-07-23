@@ -1,67 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VR Driving Game</title>
+    <title>One Twenty Five</title>
     <style>
-        body { margin: 0; }
-        canvas { display: block; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333; /* Dark background */
+            color: #eee; /* Light text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #444; /* Dark container background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #eee; /* Light heading text */
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/vr/WebXR.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/VRButton.js"></script>
-    <script>
-        let scene, camera, renderer, road;
-
-        function init() {
-            // Scene setup
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.xr.enabled = true;
-            document.body.appendChild(renderer.domElement);
-            document.body.appendChild(VRButton.createButton(renderer));
-
-            // Road setup
-            let roadGeometry = new THREE.PlaneGeometry(500, 10, 500, 10);
-            let roadMaterial = new THREE.MeshBasicMaterial({ color: 0x333333, side: THREE.DoubleSide });
-            road = new THREE.Mesh(roadGeometry, roadMaterial);
-            road.rotation.x = -Math.PI / 2;
-            scene.add(road);
-
-            // Light
-            const light = new THREE.DirectionalLight(0xffffff, 1);
-            light.position.set(5, 10, 7.5);
-            scene.add(light);
-
-            // Position the camera above the road
-            camera.position.set(0, 1.6, 5);
-        }
-
-        function generateRoad() {
-            const position = road.geometry.attributes.position;
-            for (let i = 0; i < position.count; i++) {
-                const y = Math.sin(i * 0.1) * 0.5; // Generate slight up and down
-                const x = Math.sin(i * 0.05) * 0.5; // Generate slight left and right
-                position.setY(i, y);
-                position.setX(i, x);
-            }
-            position.needsUpdate = true;
-        }
-
-        function animate() {
-            renderer.setAnimationLoop(() => {
-                generateRoad();
-                renderer.render(scene, camera);
-            });
-        }
-
-        init();
-        animate();
-    </script>
+    <div class="container">
+        <h1>OneTwentyFive</h1>
+        <h4>onetwentyfiveish.aternos.me:25527</h4>
+        <button onclick="goToMarket()">Go to Market</button>
+        <button onclick="sellItems()">Sell Items</button>
+        <button onclick="report()">Report Players</button>
+    </div>
 </body>
+<script>
+    function goToMarket() {
+        window.location.href = "market.html";
+    }
+
+    function sellItems() {
+        window.location.href = "items.html";
+    }
+
+    function report() {
+        window.location.href = "report.html";
+    }
+</script>
 </html>
